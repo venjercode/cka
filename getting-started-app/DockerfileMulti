@@ -1,0 +1,21 @@
+#node already installed with OS
+# THIS IS MULTISTAGE build example
+# Stage 1: Build Stage
+FROM node:18-alpine AS installer
+#folder inside container, can be any. Here we r doing cd to that dir
+WORKDIR /app
+#copy local src code files (getting started app) to workdir , copy all files to container root directory with ./ 
+COPY package*.json ./
+
+RUN npm install
+
+#install dependencies
+COPY . .
+
+
+# Stage 2: Nginx Deployment Stage
+FROM nginx:latest AS deployer
+
+#So that container only has files from build folder
+COPY --from=installer /app /usr/share/nginx/html
+EXPOSE 3000     

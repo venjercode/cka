@@ -1,0 +1,11 @@
+# CREATED A NEW CLUSTER FOR PORT EXPOSE. KIND WORKS THIS WAY
+# poST creating this new cluster to expose ports, deploy.yaml , then nodeport.yaml to expose
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  extraPortMappings:
+  - containerPort: 30001
+    hostPort: 30001
+- role: worker
+- role: worker

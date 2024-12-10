@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+# RC metadata
+metadata:
+  name: nginxrs
+  labels:
+    app: demo
+spec:
+  replicas: 3
+  selector:     # Corrected: Added selector field. Replicationcontroller uses this
+    matchLabels:     #define the labels that the ReplicaSet should manage. The labels here must match the labels in the pod template.
+      app: nginxdemo  
+  # POD metadata
+  template:     # Corrected: Moved template directly under spec
+    metadata:
+      labels:
+        app: nginxdemo
+  # Container metadata
+    spec:
+      containers:
+        - name: nginxcontainer
+          image: nginx
