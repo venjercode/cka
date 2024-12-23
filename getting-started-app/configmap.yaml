@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  firstname: sahil
+  lastname: sst
+kind: ConfigMap
+metadata:
+  name: appcfgmap

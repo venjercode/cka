@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nginxds
+  labels:
+    app: nginxdstest
+spec:
+  selector:
+    matchLabels:
+      app: nginxdstest
+  template:
+    metadata:
+      labels:
+        app: nginxdstest 
+    spec:
+      containers:
+      - name: nginxtestdscontainer
+        image: nginx
+        ports:
+        - containerPort: 80

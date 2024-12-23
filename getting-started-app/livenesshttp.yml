@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello
+spec:
+  containers:
+  - name: liveness
+    image: alpine
+    args:
+    - liveness
+    livenessProbe:
+      httpGet:
+      #if we dont get file at below path it fails
+        path: /healthz
+        port: 8080
+      initialDelaySeconds: 3
+      periodSeconds: 3
+    readinessProbe:
+      httpGet:
+        path: /healthz  
+        port: 8080
+      initialDelaySeconds: 5
+      periodSeconds: 10
