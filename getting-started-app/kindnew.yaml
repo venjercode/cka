@@ -1,0 +1,13 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  extraPortMappings:
+  - containerPort: 30002
+    hostPort: 30002
+- role: worker
+- role: worker
+networking:
+#TO disable kind CNI plugin & install our own
+  disableDefaultCNI: true
+  podSubnet: 192.168.0.0/16
