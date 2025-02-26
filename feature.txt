@@ -1,2 +1,6 @@
 FOR NEW BRANCH
+<<<<<<< HEAD
 new line for features
+=======
+new line aded
+>>>>>>> main
